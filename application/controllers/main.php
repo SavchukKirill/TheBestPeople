@@ -57,7 +57,7 @@ class Main extends CI_Controller
             //Удаляем информацию о том, что наш пользователь голосовал за другого пользоватедя раньше
             $this->rating_model->deleteEstimation($data['visitor_id'], $data['userprofile_id']);  
              //Добавляем информацию о данном голосе
-            $this->rating_model->putEstimation($data); 
+            $this->rating_model->putEstimation($user_id, $data); 
             //Данные для топа
             $data['top'] = $this->main_model->getTopUser($this->data['userID']);  
             $data['id_exist'] = TRUE;

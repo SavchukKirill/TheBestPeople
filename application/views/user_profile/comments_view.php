@@ -1,4 +1,5 @@
 <div id="comments">
+    <?php $url= "'" .  site_url('user_profile') . "'"; ?>
     <h2>Комментарии</h2>
     <?php if($comments): ?>
         <?php foreach($comments as $item): ?>
@@ -18,7 +19,7 @@
             <label for="comment">Оставить комментарий:</label> <br/>
             <textarea id="comment" rows="5" cols="30" wrap="soft"></textarea> 
             <br/>
-            <button value="<?=$user_id?>" onClick="addComment(this.value);">
+            <button value="<?=$user_id?>" onClick="addComment(this.value, <?=$url?>);">
                 Написать
             </button>
         </div>

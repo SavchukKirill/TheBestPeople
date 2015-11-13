@@ -1,5 +1,5 @@
 <div id="user-info">
-
+    <?php $url= "'" . site_url('user_profile') . "'"; ?>
     <?php if($id_exist) { $click = !is_null($estimation);  $vote = $estimation; } ?>
     
         <div class="avatar">
@@ -36,10 +36,10 @@
                     <button id="button<?=$user_id?>plus" value="<?=$user_id?>"
                         <?php if($click): ?>
                             <?php if($vote==0): // 1 - значит '+', 1 - раньше был сделан клик?>
-                                onClick="updateRating(this.value, <?=$page?>, 1, 1);" 
+                                onClick="updateRating(this.value, <?=$page?>, 1, 1, <?=$url?>);" 
                             <?php endif; ?>
                         <?php else: ?>
-                            onClick="updateRating(this.value, <?=$page?>, 1, 0);"
+                            onClick="updateRating(this.value, <?=$page?>, 1, 0, <?=$url?>);"
                         <?php endif; ?>            
                         type="button" class="btn btn-primary" <?php if( $click && $vote==1){echo 'disabled';}?>>+
                     </button>
@@ -48,10 +48,10 @@
                     <button id="button<?=$user_id?>minus" value="<?=$user_id?>"
                         <?php if($click): ?>
                             <?php if($vote==1): // 0 - значит '-', 1 - раньше пользователь проголовал по-другому?>
-                                onClick="updateRating(this.value, <?=$page?>, 0, 1);"  
+                                onClick="updateRating(this.value, <?=$page?>, 0, 1, <?=$url?>);"  
                             <?php endif; ?>
                         <?php else: ?>
-                            onClick="updateRating(this.value, <?=$page?>, 0, 0);"
+                            onClick="updateRating(this.value, <?=$page?>, 0, 0, <?=$url?>);"
                         <?php endif; ?>
                         type="button" class="btn btn-primary" 
                         <?php if( $click && $vote==0){echo 'disabled';}?>>&#8211;

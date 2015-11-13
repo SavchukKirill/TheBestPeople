@@ -72,11 +72,11 @@ class User_profile extends CI_Controller
                 }
             }
             //Изменяем рейтинг
-            $this->rating_model->updateRating($user_id,$rating);
+            $this->rating_model->updateRating($user_id, $rating);
             //Удаляем информацию о том, что наш пользователь голосовал за другого пользоватедя раньше
             $this->rating_model->deleteEstimation($data['visitor_id'], $data['userprofile_id']);  
             //Добавляем информацию о данном голосе
-            $this->rating_model->putEstimation($data);   
+            $this->rating_model->putEstimation($user_id, $data);   
             //Информация о пользователе dataUser и том, кто за него голосовал dataVotes
             $dataUser = $this->user_profile_model->getUser($user_id,  $this->data['userID']);
             $dataUser['visitor_id']=  $this->data['userID'];
@@ -112,6 +112,16 @@ class User_profile extends CI_Controller
             $dataVotes['votes'] = $this->user_profile_model->getVotes($user_id);
             $len = count($dataVotes['votes']);
             for ($i=0; $i<$len; $i++) {
+                
+//Если использовать setlocale (LC_ALL, 'ru_RU.utf-8', 'rus_RUS.utf-8', 'ru_RU.utf8');
+//Возвращает false и выводит английские названия
+//Если использовать setlocale (LC_ALL, 'ru_RU.utf-8', 'rus_RUS.utf-8', 'ru_RU.utf8');
+//Возвращает  "Russian_Russia.1251"  и выводит черные ромбы с вопросами 
+                
+//setlocale (LC_ALL, 'ru_RU', 'rus_RUS', 'ru_RU');
+//$tmstp = strtotime($dataVotes['votes'][$i]['date']);
+//strftime('%d %B %Y', $tmstp);
+                
                 $dataVotes['votes'][$i]['date'] = $this->russianDate($dataVotes['votes'][$i]['date']); 
             }
             //Комментарии

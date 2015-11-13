@@ -115,7 +115,7 @@ class User_profile extends CI_Controller
                 
 //Если использовать setlocale (LC_ALL, 'ru_RU.utf-8', 'rus_RUS.utf-8', 'ru_RU.utf8');
 //Возвращает false и выводит английские названия
-//Если использовать setlocale (LC_ALL, 'ru_RU.utf-8', 'rus_RUS.utf-8', 'ru_RU.utf8');
+//Если использовать setlocale (LC_ALL, 'ru_RU', 'rus_RUS', 'ru_RU');
 //Возвращает  "Russian_Russia.1251"  и выводит черные ромбы с вопросами 
                 
 //setlocale (LC_ALL, 'ru_RU', 'rus_RUS', 'ru_RU');
